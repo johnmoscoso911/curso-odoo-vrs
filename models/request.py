@@ -12,9 +12,10 @@ class Request(models.Model):
     def _default_requester(self):
         _obj = self.env['vrs.employee'].sudo()
         print(self.env.user)
-        ids = _obj.browse([('user_id', '=', self.env.user)])
-        print(ids)
-        return 1
+        ids = _obj.search([('user_id', '=', self.env.user)])
+        res = ids.mapped('id')  # _obj.browse(ids)
+        print(res)
+        return res and res[0].id
 
     # name = fields.Char(required=True, translate=True, help='The description')
     requester_id = fields.Many2one('vrs.employee', default=_default_requester)
