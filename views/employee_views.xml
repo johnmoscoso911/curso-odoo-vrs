@@ -1,0 +1,55 @@
+<?xml version="1.0"?>
+<odoo>
+    <!-- FORM VIEW -->
+    <record id="vrs_employee_form_view" model="ir.ui.view">
+        <field name="name">vrs.employee.form</field>
+        <field name="model">vrs.employee</field>
+        <field name="arch" type="xml">
+            <form string="Employee">
+                <header/>
+                <sheet>
+                    <div class="oe_title">
+                        <label class="oe_edit_only" for="name" string="Name"/>
+                        <h1>
+                            <field name="name" placeholder="Name"/>
+                        </h1>
+                    </div>
+                    <group>
+                        <group string="Info">
+                            <field name="parent_id"/>
+                            <field name="user_id" options="{'no_open': True, 'no_create': True}"/>
+                        </group>
+                        <group/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <!-- TREE VIEW -->
+    <record id="vrs_employee_list_view" model="ir.ui.view">
+        <field name="name">vrs.employee.list</field>
+        <field name="model">vrs.employee</field>
+        <field name="arch" type="xml">
+            <tree string="Employees">
+                <field name="name"/>
+                <field name="parent_id" invisible="1"/>
+            </tree>
+        </field>
+    </record>
+    <!-- SEARCH VIEW -->
+    <record id="vrs_employee_filter_view" model="ir.ui.view">
+        <field name="name">vrs.employee.filter</field>
+        <field name="model">vrs.employee</field>
+        <field name="arch" type="xml">
+            <search string="Employee">
+                <field name="name"/>
+                <separator/>
+            </search>
+        </field>
+    </record>
+    <record id="action_vrs_employee" model="ir.actions.act_window">
+        <field name="name">Employee</field>
+        <field name="res_model">vrs.employee</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+</odoo>

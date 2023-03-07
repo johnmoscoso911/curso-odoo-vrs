@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<odoo>
+    <menuitem name="Vacations"
+              id="vrs_main_menu"
+              web_icon="vrs,static/description/icon.png"
+              groups="vrs.vrs_requester,vrs.vrs_approver"
+              sequence="1">
+        <menuitem name="Employees"
+                  id="vrs_employee"
+                  groups="vrs.vrs_approver"
+                  action="action_vrs_employee"/>
+    </menuitem>
+</odoo>
