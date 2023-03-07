@@ -9,6 +9,7 @@
         'security/ir.model.access.csv',
 
         'views/employee_views.xml',
+        'views/request_views.xml',
 
         'views/menu.xml'
     ],

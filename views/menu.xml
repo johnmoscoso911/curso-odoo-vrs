@@ -6,8 +6,12 @@
               groups="vrs.vrs_requester,vrs.vrs_approver"
               sequence="1">
         <menuitem name="Employees"
-                  id="vrs_employee"
+                  id="vrs_employee_menu"
                   groups="vrs.vrs_approver"
                   action="action_vrs_employee"/>
+        <menuitem name="Request"
+                  id="vrs_request_menu"
+                  groups="vrs.vrs_requester"
+                  action="action_vrs_request"/>
     </menuitem>
 </odoo>
