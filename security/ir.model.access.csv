@@ -1,3 +1,4 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
 vrs.access_vrs_employee,access_vrs_employee,vrs.model_vrs_employee,vrs.vrs_requester,1,0,0,0
-vrs.access_vrs_employee_approver,access_vrs_employee_approver,vrs.model_vrs_employee,vrs.vrs_approver,1,1,1,0
+vrs.access_vrs_request,access_vrs_request,vrs.model_vrs_request,vrs.vrs_requester,1,0,1,0
+vrs.access_vrs_approver,access_vrs_approver,vrs.model_vrs_request,vrs.vrs_approver,1,1,1,0
