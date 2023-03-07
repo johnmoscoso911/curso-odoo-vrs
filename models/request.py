@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-from odoo import api, models, fields, _
+from odoo import api, models, fields
 
 
 class Request(models.Model):
@@ -11,11 +11,9 @@ class Request(models.Model):
     @api.model
     def _default_requester(self):
         _obj = self.env['vrs.employee'].sudo()
-        print(self.env.user)
-        ids = _obj.search([('user_id', '=', self.env.user)])
-        res = ids.mapped('id')  # _obj.browse(ids)
-        print(res)
-        return res and res[0].id
+        ids = _obj.search([('user_id', '=', self.env.user.id)])
+        res = ids.mapped('id')
+        return res and res[0]
 
     # name = fields.Char(required=True, translate=True, help='The description')
     requester_id = fields.Many2one('vrs.employee', default=_default_requester)
