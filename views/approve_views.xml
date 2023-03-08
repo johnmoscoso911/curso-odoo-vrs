@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<odoo>
+    <!-- TREE VIEW -->
+    <record id="vrs_request_view_list_view" model="ir.ui.view">
+        <field name="name">vrs.request.view.list</field>
+        <field name="model">vrs.request.view</field>
+        <field name="arch" type="xml">
+            <tree string="Request">
+                <field name="name"/>
+                <field name="start_date"/>
+                <field name="end_date"/>
+                <field name="request_id" invisible="1"/>
+                <field name="user_id" invisible="1"/>
+            </tree>
+        </field>
+    </record>
+    <record id="action_vrs_request_view" model="ir.actions.act_window">
+        <field name="name">Request</field>
+        <field name="res_model">vrs.request.view</field>
+        <field name="view_mode">tree</field>
+        <field name="domain">[('user_id','=',uid)]</field>
+    </record>
+</odoo>

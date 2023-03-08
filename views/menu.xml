@@ -13,5 +13,9 @@
                   id="vrs_request_menu"
                   groups="vrs.vrs_requester"
                   action="action_vrs_request"/>
+        <menuitem name="Request"
+                  id="vrs_request_approve_menu"
+                  groups="vrs.vrs_approver"
+                  action="action_vrs_request_view"/>
     </menuitem>
 </odoo>

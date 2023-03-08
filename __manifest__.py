@@ -10,6 +10,7 @@
 
         'views/employee_views.xml',
         'views/request_views.xml',
+        'views/approve_views.xml',
 
         'views/menu.xml'
     ],

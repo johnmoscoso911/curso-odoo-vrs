@@ -70,7 +70,7 @@ class RequestView4Approver(models.Model):
                     employee.ed end_date,
                     employee.c comments
                 from boss join employee on employee.p = boss.id
-                where boss.user_id = %d
+                order by employee.sd
             )
-            """ % (self._table, self.env.user.id)
+            """ % (self._table,)
         )
