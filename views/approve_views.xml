@@ -5,7 +5,7 @@
         <field name="name">vrs.request.view.list</field>
         <field name="model">vrs.request.view</field>
         <field name="arch" type="xml">
-            <tree string="Request" decoration-muted="draft" decoration-warning="rejected">
+            <tree string="Request" decoration-muted="state == 'draft'" decoration-warning="state == 'rejected'">
                 <field name="name"/>
                 <field name="start_date"/>
                 <field name="end_date"/>
