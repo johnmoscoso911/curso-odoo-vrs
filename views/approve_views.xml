@@ -5,12 +5,15 @@
         <field name="name">vrs.request.view.list</field>
         <field name="model">vrs.request.view</field>
         <field name="arch" type="xml">
-            <tree string="Request">
+            <tree string="Request" decoration-muted="draft" decoration-warning="rejected">
                 <field name="name"/>
                 <field name="start_date"/>
                 <field name="end_date"/>
                 <field name="request_id" invisible="1"/>
                 <field name="user_id" invisible="1"/>
+                <field name="state" invisible="1"/>
+                <button name="action_open_wizard" type="object" string="Approve" icon="fa-arrow-up"
+                        attrs="{'invisible': [('state','!=','draft')]}"/>
             </tree>
         </field>
     </record>

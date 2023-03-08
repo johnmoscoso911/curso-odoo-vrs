@@ -6,7 +6,9 @@
         <field name="model">vrs.request</field>
         <field name="arch" type="xml">
             <form string="Request">
-                <header/>
+                <header>
+                    <field name="state" widget="statusbar"/>
+                </header>
                 <sheet>
                     <field name="requester_id" invisible="1"/>
                     <field name="parent_id" invisible="1"/>
@@ -49,6 +51,6 @@
         <field name="res_model">vrs.request</field>
         <field name="view_mode">tree,form</field>
         <field name="context">{'search_default_last_days': 1}</field>
-        <field name="domain">[('requester_id.user_id','=',uid)]</field>
+        <field name="domain">[('requester_id.user_id','=',uid), ('requester_id.parent_id','!=',False)]</field>
     </record>
 </odoo>

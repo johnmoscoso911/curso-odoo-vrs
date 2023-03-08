@@ -3,6 +3,12 @@
 from odoo import api, models, fields, _
 from odoo.tools import drop_view_if_exists
 
+_STATES = [
+    ('draft', _('Draft')),
+    ('accepted', _('Accepted')),
+    ('rejected', _('Rejected'))
+]
+
 
 class Request(models.Model):
     _name = 'vrs.request'
@@ -22,6 +28,7 @@ class Request(models.Model):
     start_date = fields.Date()
     end_date = fields.Date()
     comments = fields.Text()
+    state = fields.Selection(_STATES, default='draft')
 
     _sql_constraints = [
         ('check_dates', 'check(start_date < end_date)', _('Starting date should to before end date'))
@@ -46,6 +53,7 @@ class RequestView4Approver(models.Model):
     start_date = fields.Date()
     end_date = fields.Date()
     comments = fields.Text()
+    state = fields.Selection(_STATES)
 
     def init(self):
         drop_view_if_exists(self._cr, self._table)
@@ -57,8 +65,8 @@ class RequestView4Approver(models.Model):
                     from res_users u
                     join vrs_employee b join vrs_employee s on s.parent_id = b.id
                         on b.user_id = u.id
-                ), employee(request_id, n, sd, ed, c, p) as (
-                    select vr.id, e."name", vr.start_date, vr.end_date, vr."comments", e.parent_id
+                ), employee(request_id, n, sd, ed, c, p, state) as (
+                    select vr.id, e."name", vr.start_date, vr.end_date, vr."comments", e.parent_id, vr.state
                     from vrs_employee e join vrs_request vr on vr.requester_id = e.id
                     where not vr.start_date is null
                 )
@@ -68,9 +76,13 @@ class RequestView4Approver(models.Model):
                     employee.n "name",
                     employee.sd start_date,
                     employee.ed end_date,
-                    employee.c comments
+                    employee.c comments,
+                    employee.state
                 from boss join employee on employee.p = boss.id
                 order by employee.sd
             )
             """ % (self._table,)
         )
+
+    def action_open_wizard(self):
+        pass
