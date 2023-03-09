@@ -6,3 +6,4 @@ vrs.access_vrs_approver,access_vrs_approver,vrs.model_vrs_request,vrs.vrs_approv
 access_vrs_request_admin,vrs.request.admin,model_vrs_request,vrs.vrs_admin,1,0,0,0
 vrs.access_vrs_request_view,access_vrs_request_view,vrs.model_vrs_request_view,vrs.vrs_approver,1,0,0,0
 access_vrs_request_wizard_requester,vrs.request.wizard.requester,model_vrs_request_wizard,vrs.vrs_requester,1,0,1,0
+access_vrs_request_my_requests_view_requester,vrs.request.my.requests.view.requester,model_vrs_request_my_requests_view,vrs.vrs_requester,1,0,0,0

@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-from odoo import api, models, fields, _
+from odoo import models, fields, _
 from odoo.tools import drop_view_if_exists
 
 _STATES = [
@@ -15,14 +15,6 @@ class Request(models.Model):
     _description = 'Request'
     _rec_name = 'requester_id'
 
-    # @api.model
-    # def _default_requester(self):
-    #     _obj = self.env['vrs.employee'].sudo()
-    #     ids = _obj.search([('user_id', '=', self.env.user.id)])
-    #     res = ids.mapped('id')
-    #     return res and res[0]
-
-    # name = fields.Char(required=True, translate=True, help='The description')
     requester_id = fields.Many2one('vrs.employee', required=True)
     parent_id = fields.Many2one('vrs.employee', related='requester_id.parent_id')
     start_date = fields.Date(required=True)
@@ -34,11 +26,33 @@ class Request(models.Model):
         ('check_dates', 'check(start_date < end_date)', _('Starting date should to before end date'))
     ]
 
-    # @api.model
-    # def create(self, vals):
-    #     print(vals)
-    #     x = super(Request, self).create(vals)
-    #     return x
+
+class MyRequests(models.Model):
+    _name = 'vrs.request.my.requests.view'
+    _description = 'My requests'
+    _auto = False
+    _rec_name = 'id'
+
+    request_id = fields.Many2one('vrs.request')
+    user_id = fields.Many2one('res.users')
+    state = fields.Selection(_STATES)
+
+    def init(self):
+        drop_view_if_exists(self._cr, self._table)
+        self._cr.execute(
+            """
+            CREATE OR REPLACE VIEW %s AS (
+                SELECT 
+                    row_number() over(order by r.start_date desc) id,
+                    r.id request_id,
+                    e.user_id,
+                    r.state
+                FROM vrs_request r 
+                    JOIN vrs_employee e ON e.id = r.requester_id
+                    JOIN res_users u ON u.id = e.user_id
+            )
+            """ % (self._table,)
+        )
 
 
 class RequestView4Approver(models.Model):

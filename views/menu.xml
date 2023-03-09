@@ -25,5 +25,9 @@
                   sequence="2"
                   groups="vrs.vrs_approver"
                   action="action_vrs_request_view"/>
+        <menuitem id="menu_vrs_request_my_requests_view"
+                  action="vrs_request_my_requests_view_action_all"
+                  sequence="1"
+                  groups="vrs.vrs_requester,vrs.vrs_approver"/>
     </menuitem>
 </odoo>

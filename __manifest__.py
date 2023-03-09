@@ -11,6 +11,7 @@
         'views/employee_views.xml',
         'views/request_views.xml',
         'views/approve_views.xml',
+        'views/my_requests_views.xml',
 
         'wizard/request_wizard_views.xml',
 

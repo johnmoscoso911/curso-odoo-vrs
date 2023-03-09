@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- form view -->
+    <record id="vrs_request_my_requests_view_form_view" model="ir.ui.view">
+        <field name="name">vrs.request.my.requests.view.form</field>
+        <field name="model">vrs.request.my.requests.view</field>
+        <field name="arch" type="xml">
+            <form string="My requests">
+                <header>
+                    <field name="state" widget="statusbar"/>
+                </header>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="request_id" options="{'no_open': True}"/>
+                        </group>
+                    </group>
+                    <!--                    <notebook>-->
+                    <!--                        <page string="Description">-->
+                    <!--                            <field name="description" widget="html" nolabel="1"/>-->
+                    <!--                        </page>-->
+                    <!--                    </notebook>-->
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <!-- list view -->
+    <record id="vrs_request_my_requests_view_list_view" model="ir.ui.view">
+        <field name="name">vrs.request.my.requests.view.list</field>
+        <field name="model">vrs.request.my.requests.view</field>
+        <field name="arch" type="xml">
+            <tree string="My requests">
+                <field name="user_id" invisible="1"/>
+                <field name="request_id"/>
+            </tree>
+        </field>
+    </record>
+    <!-- menu action -->
+    <record id="vrs_request_my_requests_view_action_all" model="ir.actions.act_window">
+        <field name="name">My requests</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">vrs.request.my.requests.view</field>
+        <field name="view_mode">tree,form</field>
+        <field name="context">{}</field>
+        <field name="domain">[('user_id','=',uid)]</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                You haven't requests
+            </p>
+        </field>
+    </record>
+</odoo>
