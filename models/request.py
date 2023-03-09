@@ -15,18 +15,18 @@ class Request(models.Model):
     _description = 'Request'
     _rec_name = 'requester_id'
 
-    @api.model
-    def _default_requester(self):
-        _obj = self.env['vrs.employee'].sudo()
-        ids = _obj.search([('user_id', '=', self.env.user.id)])
-        res = ids.mapped('id')
-        return res and res[0]
+    # @api.model
+    # def _default_requester(self):
+    #     _obj = self.env['vrs.employee'].sudo()
+    #     ids = _obj.search([('user_id', '=', self.env.user.id)])
+    #     res = ids.mapped('id')
+    #     return res and res[0]
 
     # name = fields.Char(required=True, translate=True, help='The description')
-    requester_id = fields.Many2one('vrs.employee', default=_default_requester)
+    requester_id = fields.Many2one('vrs.employee', required=True)
     parent_id = fields.Many2one('vrs.employee', related='requester_id.parent_id')
-    start_date = fields.Date()
-    end_date = fields.Date()
+    start_date = fields.Date(required=True)
+    end_date = fields.Date(required=True)
     comments = fields.Text()
     state = fields.Selection(_STATES, default='draft')
 
@@ -34,11 +34,11 @@ class Request(models.Model):
         ('check_dates', 'check(start_date < end_date)', _('Starting date should to before end date'))
     ]
 
-    @api.model
-    def create(self, vals):
-        print(vals)
-        x = super(Request, self).create(vals)
-        return x
+    # @api.model
+    # def create(self, vals):
+    #     print(vals)
+    #     x = super(Request, self).create(vals)
+    #     return x
 
 
 class RequestView4Approver(models.Model):
@@ -48,6 +48,7 @@ class RequestView4Approver(models.Model):
     _rec_name = 'id'
 
     request_id = fields.Many2one('vrs.request')
+    employee_id = fields.Many2one('vrs.employee')
     user_id = fields.Many2one('res.users')
     name = fields.Char()
     start_date = fields.Date()
@@ -65,21 +66,22 @@ class RequestView4Approver(models.Model):
                     from res_users u
                     join vrs_employee b join vrs_employee s on s.parent_id = b.id
                         on b.user_id = u.id
-                ), employee(request_id, n, sd, ed, c, p, state) as (
-                    select vr.id, e."name", vr.start_date, vr.end_date, vr."comments", e.parent_id, vr.state
+                ), employee(request_id, id, "name", start_date, end_date, "comments", parent_id, "state") as (
+                    select vr.id, e.id, e."name", vr.start_date, vr.end_date, vr."comments", e.parent_id, vr.state
                     from vrs_employee e join vrs_request vr on vr.requester_id = e.id
                     where not vr.start_date is null
                 )
-                select row_number() over(order by employee.n) as id,
-                    request_id,
+                select row_number() over(order by sub.request_id) as id,
+                    sub.request_id,
+                    sub.id employee_id,
                     boss.user_id,
-                    employee.n "name",
-                    employee.sd start_date,
-                    employee.ed end_date,
-                    employee.c comments,
-                    employee.state
-                from boss join employee on employee.p = boss.id
-                order by employee.sd
+                    sub."name",
+                    sub.start_date,
+                    sub.end_date,
+                    sub."comments",
+                    sub.state
+                from boss join employee sub on sub.parent_id = boss.id
+                order by sub.start_date
             )
             """ % (self._table,)
         )

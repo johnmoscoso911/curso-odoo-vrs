@@ -12,6 +12,8 @@
         'views/request_views.xml',
         'views/approve_views.xml',
 
+        'wizard/request_wizard_views.xml',
+
         'views/menu.xml'
     ],
     'application': False,

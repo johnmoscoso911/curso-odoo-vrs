@@ -1,32 +1,57 @@
 <?xml version="1.0"?>
 <odoo>
-    <!-- FORM VIEW -->
-    <record id="vrs_request_form_view" model="ir.ui.view">
-        <field name="name">vrs.request.form</field>
+    <!-- list view -->
+    <record id="vrs_request_list_view" model="ir.ui.view">
+        <field name="name">vrs.request.list</field>
         <field name="model">vrs.request</field>
         <field name="arch" type="xml">
-            <form string="Request">
-                <header>
-                    <field name="state" widget="statusbar"/>
-                </header>
-                <sheet>
-                    <field name="requester_id" invisible="1"/>
-                    <field name="parent_id" invisible="1"/>
-                    <group>
-                        <group>
-                            <field name="start_date" required="1"/>
-                        </group>
-                        <group>
-                            <field name="end_date" required="1"/>
-                        </group>
-                    </group>
-                    <notebook>
-                        <page string="Comments">
-                            <field name="comments" widget="html" nolabel="1"/>
-                        </page>
-                    </notebook>
-                </sheet>
-            </form>
+            <tree string="All requests">
+                <field name="requester_id"/>
+                <field name="start_date"/>
+                <field name="end_date"/>
+                <field name="state" invisible="1"/>
+            </tree>
+        </field>
+    </record>
+    <!-- kanban view -->
+    <record id="vrs_request_kanban_view" model="ir.ui.view">
+        <field name="name">vrs.request.kanban</field>
+        <field name="model">vrs.request</field>
+        <field name="arch" type="xml">
+            <kanban class="o_kanban_mobile">
+                <field name="requester_id"/>
+                <field name="start_date"/>
+                <field name="end_date"/>
+                <field name="comments"/>
+                <field name="state"/>
+                <templates>
+                    <progressbar field="state" colors='{"accepted": "success", "rejected": "danger"}'/>
+                    <t t-name="kanban-box">
+                        <div t-attf-class="oe_kanban_card oe_kanban_global_click">
+                            <div class="o_kanban_record_top mb16">
+                                <div class="o_kanban_record_headings mt4">
+                                    <strong class="o_kanban_record_title">
+                                        <field name="requester_id"/>
+                                    </strong>
+                                </div>
+                                <strong>
+                                </strong>
+                            </div>
+                            <div class="o_kanban_record_body">
+                                <field name="comments"/>
+                            </div>
+                            <div class="o_kanban_record_bottom">
+                                <div class="oe_kanban_bottom_left">
+                                    <span/>
+                                </div>
+                                <div class="oe_kanban_bottom_right">
+                                    <field name="state" widget="label_selection"/>
+                                </div>
+                            </div>
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
         </field>
     </record>
     <!-- SEARCH VIEW -->
@@ -34,23 +59,22 @@
         <field name="name">vrs.request.filter</field>
         <field name="model">vrs.request</field>
         <field name="arch" type="xml">
-            <search string="Request">
+            <search string="All requests">
                 <filter domain="[('start_date', '&gt;', (context_today() - datetime.timedelta(days=30)).strftime('%%Y-%%m-%%d'))]"
                         string="Last 30 days"
                         name="last_days"/>
                 <separator/>
                 <group expand="0" string="Group By">
-                    <filter name="group_by_month" string="Monthly" context="{'group_by': 'start_date:month'}"/>
+                    <filter name="group_by_month" string="Start date" context="{'group_by': 'start_date:month'}"/>
                 </group>
             </search>
         </field>
     </record>
     <!-- ACTION -->
     <record id="action_vrs_request" model="ir.actions.act_window">
-        <field name="name">Request</field>
+        <field name="name">All requests</field>
         <field name="res_model">vrs.request</field>
-        <field name="view_mode">tree,form</field>
+        <field name="view_mode">kanban,tree</field>
         <field name="context">{'search_default_last_days': 1}</field>
-        <field name="domain">[('requester_id.user_id','=',uid), ('requester_id.parent_id','!=',False)]</field>
     </record>
 </odoo>

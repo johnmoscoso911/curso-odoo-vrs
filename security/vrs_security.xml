@@ -13,6 +13,14 @@
         <field name="name">Approver</field>
         <field name="category_id" ref="vrs.vrs_category"/>
         <field name="implied_ids" eval="[(4, ref('vrs.vrs_requester'))]"/>
+    </record>
+
+    <record id="vrs_admin_category" model="ir.module.category">
+        <field name="name">Vacation administrator</field>
+    </record>
+    <record id="vrs_admin" model="res.groups">
+        <field name="name">Administrator</field>
+        <field name="category_id" ref="vrs.vrs_admin_category"/>
         <field name="users" eval="[(4, ref('base.user_root')), (4, ref('base.user_admin'))]"/>
     </record>
 </odoo>
