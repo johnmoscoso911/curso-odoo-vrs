@@ -1,0 +1,313 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* vrs
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 15.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-03-09 02:54+0000\n"
+"PO-Revision-Date: 2023-03-09 02:54+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: vrs
+#: code:addons/vrs/models/request.py:0
+#: model:ir.model.fields.selection,name:vrs.selection__vrs_request__state__accepted
+#: model:ir.model.fields.selection,name:vrs.selection__vrs_request_my_requests_view__state__accepted
+#: model:ir.model.fields.selection,name:vrs.selection__vrs_request_view__state__accepted
+#, python-format
+msgid "Accepted"
+msgstr "Aceptado"
+
+#. module: vrs
+#: model:res.groups,name:vrs.vrs_admin
+msgid "Administrator"
+msgstr "Administrador"
+
+#. module: vrs
+#: model:ir.actions.act_window,name:vrs.action_vrs_request
+#: model:ir.ui.menu,name:vrs.vrs_my_requests_menu
+#: model_terms:ir.ui.view,arch_db:vrs.vrs_request_filter_view
+#: model_terms:ir.ui.view,arch_db:vrs.vrs_request_list_view
+msgid "All requests"
+msgstr "Todas las solicitudes"
+
+#. module: vrs
+#: model_terms:ir.ui.view,arch_db:vrs.vrs_request_view_list_view
+msgid "Approve"
+msgstr "Aprobar"
+
+#. module: vrs
+#: model:res.groups,name:vrs.vrs_approver
+msgid "Approver"
+msgstr "Aprobador"
+
+#. module: vrs
+#: model_terms:ir.ui.view,arch_db:vrs.vrs_request_wizard_form
+msgid "Cancel"
+msgstr "Cancelar"
+
+#. module: vrs
+#: model:ir.model.fields,field_description:vrs.field_vrs_request__comments
+#: model:ir.model.fields,field_description:vrs.field_vrs_request_view__comments
+#: model:ir.model.fields,field_description:vrs.field_vrs_request_wizard__comments
+#: model_terms:ir.ui.view,arch_db:vrs.vrs_request_wizard_form
+msgid "Comments"
+msgstr "Observaciones"
+
+#. module: vrs
+#: model:ir.model.fields,field_description:vrs.field_vrs_employee__create_uid
+#: model:ir.model.fields,field_description:vrs.field_vrs_request__create_uid
+#: model:ir.model.fields,field_description:vrs.field_vrs_request_wizard__create_uid
+msgid "Created by"
+msgstr ""
+
+#. module: vrs
+#: model:ir.model.fields,field_description:vrs.field_vrs_employee__create_date
+#: model:ir.model.fields,field_description:vrs.field_vrs_request__create_date
+#: model:ir.model.fields,field_description:vrs.field_vrs_request_wizard__create_date
+msgid "Created on"
+msgstr ""
+
+#. module: vrs
+#: model:ir.model.fields,field_description:vrs.field_vrs_employee__display_name
+#: model:ir.model.fields,field_description:vrs.field_vrs_request__display_name
+#: model:ir.model.fields,field_description:vrs.field_vrs_request_my_requests_view__display_name
+#: model:ir.model.fields,field_description:vrs.field_vrs_request_view__display_name
+#: model:ir.model.fields,field_description:vrs.field_vrs_request_wizard__display_name
+msgid "Display Name"
+msgstr ""
+
+#. module: vrs
+#: code:addons/vrs/models/request.py:0
+#: model:ir.model.fields.selection,name:vrs.selection__vrs_request__state__draft
+#: model:ir.model.fields.selection,name:vrs.selection__vrs_request_my_requests_view__state__draft
+#: model:ir.model.fields.selection,name:vrs.selection__vrs_request_view__state__draft
+#, python-format
+msgid "Draft"
+msgstr "Borrador"
+
+#. module: vrs
+#: model:ir.actions.act_window,name:vrs.action_vrs_employee
+#: model:ir.model,name:vrs.model_vrs_employee
+#: model:ir.model.fields,field_description:vrs.field_vrs_request_view__employee_id
+#: model_terms:ir.ui.view,arch_db:vrs.vrs_employee_filter_view
+#: model_terms:ir.ui.view,arch_db:vrs.vrs_employee_form_view
+msgid "Employee"
+msgstr "Empleado"
+
+#. module: vrs
+#: model:ir.ui.menu,name:vrs.vrs_employee_menu
+#: model_terms:ir.ui.view,arch_db:vrs.vrs_employee_list_view
+msgid "Employees"
+msgstr "Empleados"
+
+#. module: vrs
+#: model:ir.model.fields,field_description:vrs.field_vrs_request__end_date
+#: model:ir.model.fields,field_description:vrs.field_vrs_request_view__end_date
+#: model:ir.model.fields,field_description:vrs.field_vrs_request_wizard__end_date
+msgid "End Date"
+msgstr "Fecha final"
+
+#. module: vrs
+#: model_terms:ir.ui.view,arch_db:vrs.vrs_request_wizard_form
+msgid "Enter dates and describe the reason for you request"
+msgstr "Ingrese las fechas y describa la razón de su solicitud"
+
+#. module: vrs
+#: model_terms:ir.ui.view,arch_db:vrs.vrs_request_filter_view
+#: model_terms:ir.ui.view,arch_db:vrs.vrs_request_view_filter_view
+msgid "Group By"
+msgstr ""
+
+#. module: vrs
+#: model:ir.model.fields,field_description:vrs.field_vrs_employee__id
+#: model:ir.model.fields,field_description:vrs.field_vrs_request__id
+#: model:ir.model.fields,field_description:vrs.field_vrs_request_my_requests_view__id
+#: model:ir.model.fields,field_description:vrs.field_vrs_request_view__id
+#: model:ir.model.fields,field_description:vrs.field_vrs_request_wizard__id
+msgid "ID"
+msgstr ""
+
+#. module: vrs
+#: model_terms:ir.ui.view,arch_db:vrs.vrs_employee_form_view
+msgid "Info"
+msgstr "Información"
+
+#. module: vrs
+#: model_terms:ir.ui.view,arch_db:vrs.vrs_request_filter_view
+msgid "Last 30 days"
+msgstr "Últimos 30 días"
+
+#. module: vrs
+#: model_terms:ir.ui.view,arch_db:vrs.vrs_request_view_filter_view
+msgid "Last 7 days"
+msgstr "Últimos 7 días"
+
+#. module: vrs
+#: model:ir.model.fields,field_description:vrs.field_vrs_employee____last_update
+#: model:ir.model.fields,field_description:vrs.field_vrs_request____last_update
+#: model:ir.model.fields,field_description:vrs.field_vrs_request_my_requests_view____last_update
+#: model:ir.model.fields,field_description:vrs.field_vrs_request_view____last_update
+#: model:ir.model.fields,field_description:vrs.field_vrs_request_wizard____last_update
+msgid "Last Modified on"
+msgstr ""
+
+#. module: vrs
+#: model:ir.model.fields,field_description:vrs.field_vrs_employee__write_uid
+#: model:ir.model.fields,field_description:vrs.field_vrs_request__write_uid
+#: model:ir.model.fields,field_description:vrs.field_vrs_request_wizard__write_uid
+msgid "Last Updated by"
+msgstr ""
+
+#. module: vrs
+#: model:ir.model.fields,field_description:vrs.field_vrs_employee__write_date
+#: model:ir.model.fields,field_description:vrs.field_vrs_request__write_date
+#: model:ir.model.fields,field_description:vrs.field_vrs_request_wizard__write_date
+msgid "Last Updated on"
+msgstr ""
+
+#. module: vrs
+#: model:ir.actions.act_window,name:vrs.vrs_request_my_requests_view_action_all
+#: model:ir.model,name:vrs.model_vrs_request_my_requests_view
+#: model:ir.ui.menu,name:vrs.menu_vrs_request_my_requests_view
+#: model_terms:ir.ui.view,arch_db:vrs.vrs_request_my_requests_view_form_view
+#: model_terms:ir.ui.view,arch_db:vrs.vrs_request_my_requests_view_list_view
+msgid "My requests"
+msgstr "Mis solicitudes"
+
+#. module: vrs
+#: model:ir.ui.menu,name:vrs.vrs_request_approve_menu
+msgid "My subordinates"
+msgstr "Subordinados"
+
+#. module: vrs
+#: model:ir.model.fields,field_description:vrs.field_vrs_employee__name
+#: model:ir.model.fields,field_description:vrs.field_vrs_request_view__name
+#: model_terms:ir.ui.view,arch_db:vrs.vrs_employee_form_view
+msgid "Name"
+msgstr "Nombre"
+
+#. module: vrs
+#: model:ir.ui.menu,name:vrs.vrs_request_menu
+msgid "New request"
+msgstr "Nueva solicitud"
+
+#. module: vrs
+#: model:ir.model.fields,field_description:vrs.field_vrs_employee__parent_id
+#: model:ir.model.fields,field_description:vrs.field_vrs_request__parent_id
+msgid "Parent"
+msgstr "Superior inmediato"
+
+#. module: vrs
+#: code:addons/vrs/models/request.py:0
+#: model:ir.model.fields.selection,name:vrs.selection__vrs_request__state__rejected
+#: model:ir.model.fields.selection,name:vrs.selection__vrs_request_my_requests_view__state__rejected
+#: model:ir.model.fields.selection,name:vrs.selection__vrs_request_view__state__rejected
+#, python-format
+msgid "Rejected"
+msgstr "Rechazado"
+
+#. module: vrs
+#: model:ir.actions.act_window,name:vrs.vrs_request_wizard_action_all
+#: model:ir.model,name:vrs.model_vrs_request
+#: model:ir.model,name:vrs.model_vrs_request_wizard
+#: model:ir.model.fields,field_description:vrs.field_vrs_request_my_requests_view__request_id
+#: model:ir.model.fields,field_description:vrs.field_vrs_request_view__request_id
+#: model_terms:ir.ui.view,arch_db:vrs.vrs_request_wizard_form
+msgid "Request"
+msgstr "Solicitud"
+
+#. module: vrs
+#: model:ir.model.fields,field_description:vrs.field_vrs_request__requester_id
+#: model:ir.model.fields,field_description:vrs.field_vrs_request_wizard__requester_id
+#: model:res.groups,name:vrs.vrs_requester
+msgid "Requester"
+msgstr "Solicitante"
+
+#. module: vrs
+#: model:ir.actions.act_window,name:vrs.action_vrs_request_view
+#: model_terms:ir.ui.view,arch_db:vrs.vrs_request_view_filter_view
+#: model_terms:ir.ui.view,arch_db:vrs.vrs_request_view_list_view
+msgid "Requests"
+msgstr "Solicitudes"
+
+#. module: vrs
+#: model:res.groups,comment:vrs.vrs_requester
+msgid "Role that will allow you to request vacations within the company"
+msgstr ""
+
+#. module: vrs
+#: model:ir.model.fields,field_description:vrs.field_vrs_request__start_date
+#: model:ir.model.fields,field_description:vrs.field_vrs_request_view__start_date
+#: model:ir.model.fields,field_description:vrs.field_vrs_request_wizard__start_date
+msgid "Start Date"
+msgstr "Fecha inicial"
+
+#. module: vrs
+#: model_terms:ir.ui.view,arch_db:vrs.vrs_request_filter_view
+msgid "Start date"
+msgstr "Fecha inicial"
+
+#. module: vrs
+#: code:addons/vrs/models/request.py:0
+#: model:ir.model.constraint,message:vrs.constraint_vrs_request_check_dates
+#, python-format
+msgid "Starting date should to before end date"
+msgstr "La fecha inicial debe ser anterior a la fecha final"
+
+#. module: vrs
+#: model:ir.model.fields,field_description:vrs.field_vrs_request__state
+#: model:ir.model.fields,field_description:vrs.field_vrs_request_my_requests_view__state
+#: model:ir.model.fields,field_description:vrs.field_vrs_request_view__state
+#: model_terms:ir.ui.view,arch_db:vrs.vrs_request_view_filter_view
+msgid "State"
+msgstr "Estado"
+
+#. module: vrs
+#: model_terms:ir.ui.view,arch_db:vrs.vrs_request_view_filter_view
+msgid "Subordinate"
+msgstr "Subordinado"
+
+#. module: vrs
+#: model:ir.model.fields,field_description:vrs.field_vrs_employee__user_id
+#: model:ir.model.fields,field_description:vrs.field_vrs_request_my_requests_view__user_id
+#: model:ir.model.fields,field_description:vrs.field_vrs_request_view__user_id
+msgid "User"
+msgstr "Usuario"
+
+#. module: vrs
+#: model:ir.module.category,name:vrs.vrs_admin_category
+msgid "Vacation administrator"
+msgstr "Administrador del módulo"
+
+#. module: vrs
+#: model:ir.module.category,name:vrs.vrs_category
+msgid "Vacation requester"
+msgstr "Solicitante de vacaciones"
+
+#. module: vrs
+#: model:ir.ui.menu,name:vrs.vrs_main_menu
+msgid "Vacations"
+msgstr "Vacaciones"
+
+#. module: vrs
+#: model:ir.model,name:vrs.model_vrs_request_view
+msgid "View"
+msgstr "Vista"
+
+#. module: vrs
+#: model_terms:ir.actions.act_window,help:vrs.vrs_request_my_requests_view_action_all
+msgid "You haven't requests"
+msgstr "No tiene solicitudes"
+
+#. module: vrs
+#: code:addons/vrs/wizard/request_wizard.py:0
+#, python-format
+msgid "end date (%s) should be greater than start date (%s)"
+msgstr "la fecha final (%s) debe ser mayor a la fecha inicial (%s)"
