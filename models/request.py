@@ -116,5 +116,4 @@ class RequestView4Approver(models.Model):
             'target': 'new',
             'context': dict(self.env.context, default_request_id=self.request_id.id)
         }
-        print(action.get('context'))
         return action

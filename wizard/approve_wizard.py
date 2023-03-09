@@ -12,9 +12,12 @@ class ApproveWizard(models.TransientModel):
     reason_id = fields.Many2one('vrs.reject.reason')
 
     def do_action(self):
-        # self.env['vrs.request']
         if self.check:
             self.request_id.accept()
         else:
             self.request_id.reject()
+            self.env['vrs.rejected.request'].create({
+                'request_id': self.request_id.id,
+                'reason_id': self.reason_id.id
+            })
         return {'type': 'ir.actions.act_window_close'}

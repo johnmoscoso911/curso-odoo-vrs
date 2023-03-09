@@ -15,4 +15,33 @@
         <field name="res_model">vrs.reject.reason</field>
         <field name="view_mode">tree</field>
     </record>
+    <!-- graph view -->
+    <record id="vrs_rejected_request_graph_view" model="ir.ui.view">
+        <field name="name">vrs.rejected.request.graph</field>
+        <field name="model">vrs.rejected.request</field>
+        <field name="arch" type="xml">
+            <graph string="Rejected requests">
+                <field name="reason_id"/>
+            </graph>
+        </field>
+    </record>
+    <!-- PIVOT VIEW -->
+    <record id="vrs_rejected_request_pivot_view" model="ir.ui.view">
+        <field name="name">vrs.rejected.request.pivot</field>
+        <field name="model">vrs.rejected.request</field>
+        <field name="arch" type="xml">
+            <pivot string="Rejected requests">
+                <field name="reason_id" type="row"/>
+                <field name="date" type="col" interval="week"/>
+            </pivot>
+        </field>
+    </record>
+    <!-- menu action -->
+    <record id="vrs_rejected_request_action_all" model="ir.actions.act_window">
+        <field name="name">Rejected requests</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">vrs.rejected.request</field>
+        <field name="view_mode">pivot,graph</field>
+        <field name="context">{}</field>
+    </record>
 </odoo>

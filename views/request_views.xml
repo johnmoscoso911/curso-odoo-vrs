@@ -38,14 +38,15 @@
                                 </strong>
                             </div>
                             <div class="o_kanban_record_body">
-                                <field name="comments"/>
+                                <field name="comments" widget="html"/>
                             </div>
                             <div class="o_kanban_record_bottom">
                                 <div class="oe_kanban_bottom_left">
                                     <span/>
                                 </div>
                                 <div class="oe_kanban_bottom_right">
-                                    <field name="state" widget="label_selection"/>
+                                    <field name="state" widget="label_selection"
+                                           options="{'classes': {'draft': 'default', 'rejected': 'danger', 'accepted': 'success'}}"/>
                                 </div>
                             </div>
                         </div>

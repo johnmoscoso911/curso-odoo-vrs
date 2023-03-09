@@ -18,7 +18,7 @@
                     </group>
                 </group>
                 <label for="comments" string="Comments"/>
-                <field name="comments" nolabel="1"
+                <field name="comments" nolabel="1" widget="html"
                        attrs="{'required': [('requester_id', '!=', False)], 'readonly': [('requester_id', '=', False)]}"/>
                 <footer>
                     <button string="Request" name="do_action" type="object" class="oe_highlight" data-hotkey="q"/>

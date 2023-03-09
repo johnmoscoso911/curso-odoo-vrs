@@ -5,34 +5,46 @@
               web_icon="vrs,static/description/icon.png"
               groups="vrs.vrs_requester,vrs.vrs_approver,vrs.vrs_admin"
               sequence="1">
-        <menuitem name="Employees"
-                  id="vrs_employee_menu"
-                  sequence="9"
+        <!--ADMIN-->
+        <menuitem id="menu_vrs_rejected_request"
+                  action="vrs_rejected_request_action_all"
+                  sequence="19"
+                  groups="vrs.vrs_admin"/>
+        <menuitem name="All requests"
+                  id="vrs_my_requests_menu"
+                  sequence="20"
                   groups="vrs.vrs_admin"
-                  action="action_vrs_employee"/>
+                  action="action_vrs_request"/>
+        <menuitem id="menu_vrs_config"
+                  name="Configuration"
+                  sequence="21"
+                  groups="vrs.vrs_admin">
+            <menuitem name="Employees"
+                      id="vrs_employee_menu"
+                      sequence="1"
+                      groups="vrs.vrs_admin"
+                      action="action_vrs_employee"/>
+            <menuitem id="vrs_reason_menu"
+                      name="Reason"
+                      action="action_vrs_reject_reason"
+                      sequence="2"
+                      groups="vrs.vrs_admin"/>
+        </menuitem>
+        <!--REQUESTER+APPROVER-->
         <menuitem name="New request"
                   id="vrs_request_menu"
                   sequence="3"
                   groups="vrs.vrs_requester,vrs.vrs_approver"
                   action="vrs_request_wizard_action_all"/>
-        <menuitem name="All requests"
-                  id="vrs_my_requests_menu"
-                  sequence="10"
-                  groups="vrs.vrs_admin"
-                  action="action_vrs_request"/>
+        <menuitem id="menu_vrs_request_my_requests_view"
+                  action="vrs_request_my_requests_view_action_all"
+                  sequence="1"
+                  groups="vrs.vrs_requester,vrs.vrs_approver"/>
+        <!--APPROVER-->
         <menuitem name="My subordinates"
                   id="vrs_request_approve_menu"
                   sequence="2"
                   groups="vrs.vrs_approver"
                   action="action_vrs_request_view"/>
-        <menuitem id="menu_vrs_request_my_requests_view"
-                  action="vrs_request_my_requests_view_action_all"
-                  sequence="1"
-                  groups="vrs.vrs_requester,vrs.vrs_approver"/>
-        <menuitem id="vrs_reason_menu"
-                  name="Reason"
-                  action="action_vrs_reject_reason"
-                  sequence="11"
-                  groups="vrs.vrs_admin"/>
     </menuitem>
 </odoo>
