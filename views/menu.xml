@@ -29,5 +29,10 @@
                   action="vrs_request_my_requests_view_action_all"
                   sequence="1"
                   groups="vrs.vrs_requester,vrs.vrs_approver"/>
+        <menuitem id="vrs_reason_menu"
+                  name="Reason"
+                  action="action_vrs_reject_reason"
+                  sequence="11"
+                  groups="vrs.vrs_admin"/>
     </menuitem>
 </odoo>

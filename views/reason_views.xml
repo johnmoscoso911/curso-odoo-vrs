@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<odoo>
+    <!-- TREE VIEW -->
+    <record id="vrs_reject_reason_list_view" model="ir.ui.view">
+        <field name="name">vrs.reject.reason.list</field>
+        <field name="model">vrs.reject.reason</field>
+        <field name="arch" type="xml">
+            <tree string="Reason" editable="bottom">
+                <field name="name"/>
+            </tree>
+        </field>
+    </record>
+    <record id="action_vrs_reject_reason" model="ir.actions.act_window">
+        <field name="name">Reason</field>
+        <field name="res_model">vrs.reject.reason</field>
+        <field name="view_mode">tree</field>
+    </record>
+</odoo>
