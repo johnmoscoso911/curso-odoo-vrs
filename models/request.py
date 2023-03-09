@@ -26,6 +26,12 @@ class Request(models.Model):
         ('check_dates', 'check(start_date < end_date)', _('Starting date should to before end date'))
     ]
 
+    def reject(self):
+        self.write({'state': 'rejected'})
+
+    def accept(self):
+        self.write({'state': 'accepted'})
+
 
 class MyRequests(models.Model):
     _name = 'vrs.request.my.requests.view'
@@ -101,4 +107,14 @@ class RequestView4Approver(models.Model):
         )
 
     def action_open_wizard(self):
-        pass
+        self.ensure_one()
+        action = {
+            'type': 'ir.actions.act_window',
+            'name': _('Confirm'),
+            'res_model': 'vrs.approve.wizard',
+            'view_mode': 'form',
+            'target': 'new',
+            'context': dict(self.env.context, default_request_id=self.request_id.id)
+        }
+        print(action.get('context'))
+        return action

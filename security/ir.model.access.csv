@@ -9,3 +9,4 @@ access_vrs_request_wizard_requester,vrs.request.wizard.requester,model_vrs_reque
 access_vrs_request_my_requests_view_requester,vrs.request.my.requests.view.requester,model_vrs_request_my_requests_view,vrs.vrs_requester,1,0,0,0
 vrs.access_vrs_reject_reason_admin,access_vrs_reject_reason_admin,vrs.model_vrs_reject_reason,vrs.vrs_admin,1,1,1,0
 vrs.access_vrs_reject_reason,access_vrs_reject_reason,vrs.model_vrs_reject_reason,vrs.vrs_requester,1,0,0,0
+access_vrs_approve_wizard_approver,access.vrs.approve.wizard.requester,model_vrs_approve_wizard,vrs.vrs_approver,1,0,1,0

@@ -1,4 +1,29 @@
 <?xml version="1.0"?>
 <odoo>
-
+    <!-- WIZARD FORM -->
+    <record id="vrs_approve_wizard_form" model="ir.ui.view">
+        <field name="name">vrs.approve.wizard.form</field>
+        <field name="model">vrs.approve.wizard</field>
+        <field name="arch" type="xml">
+            <form>
+                <field name="request_id" invisible="1"/>
+                <div class="alert alert-info text-center" role="status">
+                    Confirm?
+                </div>
+                <group>
+                    <group>
+                        <field name="check" widget="boolean_toggle"/>
+                    </group>
+                    <group>
+                        <field name="reason_id" options="{'no_open': True, 'no_create_edit': True}"
+                               attrs="{'invisible': [('check', '=', True)], 'required': [('check', '=', False)]}"/>
+                    </group>
+                </group>
+                <footer>
+                    <button string="Send" name="do_action" type="object" class="oe_highlight" data-hotkey="q"/>
+                    <button string="Cancel" class="btn btn-secondary" special="cancel" data-hotkey="z"/>
+                </footer>
+            </form>
+        </field>
+    </record>
 </odoo>
