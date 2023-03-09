@@ -37,7 +37,7 @@ class MyRequests(models.Model):
     _name = 'vrs.request.my.requests.view'
     _description = 'My requests'
     _auto = False
-    _rec_name = 'id'
+    _rec_name = 'state'
 
     request_id = fields.Many2one('vrs.request')
     user_id = fields.Many2one('res.users')

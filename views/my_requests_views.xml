@@ -6,10 +6,14 @@
         <field name="model">vrs.request.my.requests.view</field>
         <field name="arch" type="xml">
             <form string="My requests">
-                <header>
-                    <field name="state" widget="statusbar"/>
-                </header>
+                <field name="state" invisible="1"/>
                 <sheet>
+                    <div class="oe_button_box">
+                        <widget name="web_ribbon" title="Rejected" bg_color="bg-danger"
+                                attrs="{'invisible': [('state', 'in', ['draft', 'accepted'])]}"/>
+                        <widget name="web_ribbon" title="Accepted" bg_color="bg-danger"
+                                attrs="{'invisible': [('state', 'in', ['draft', 'rejected'])]}"/>
+                    </div>
                     <group>
                         <group>
                             <field name="request_id" options="{'no_open': True}"/>
