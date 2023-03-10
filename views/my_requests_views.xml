@@ -15,15 +15,14 @@
                                 attrs="{'invisible': [('state', 'in', ['draft', 'rejected'])]}"/>
                     </div>
                     <group>
-                        <group>
-                            <field name="request_id" options="{'no_open': True}"/>
+                        <group string="Request info">
+                            <field name="days"/>
+                            <field name="comments" widget="html"/>
+                        </group>
+                        <group string="Rejection info">
+                            <field name="reason_desc"/>
                         </group>
                     </group>
-                    <!--                    <notebook>-->
-                    <!--                        <page string="Description">-->
-                    <!--                            <field name="description" widget="html" nolabel="1"/>-->
-                    <!--                        </page>-->
-                    <!--                    </notebook>-->
                 </sheet>
             </form>
         </field>
@@ -36,6 +35,8 @@
             <tree string="My requests">
                 <field name="user_id" invisible="1"/>
                 <field name="request_id"/>
+                <field name="days"/>
+                <field name="reason_desc"/>
             </tree>
         </field>
     </record>

@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
-from odoo import models, fields, _
-from odoo.tools import drop_view_if_exists
+from odoo import models, fields, _, api
+from odoo.tools import drop_view_if_exists, format_date
 
 _STATES = [
     ('draft', _('Draft')),
@@ -13,8 +13,8 @@ _STATES = [
 class Request(models.Model):
     _name = 'vrs.request'
     _description = 'Request'
-    _rec_name = 'requester_id'
 
+    name = fields.Char(compute='_compute_name')
     requester_id = fields.Many2one('vrs.employee', required=True)
     parent_id = fields.Many2one('vrs.employee', related='requester_id.parent_id')
     start_date = fields.Date(required=True)
@@ -25,6 +25,15 @@ class Request(models.Model):
     _sql_constraints = [
         ('check_dates', 'check(start_date < end_date)', _('Starting date should to before end date'))
     ]
+
+    @api.depends('requester_id.name', 'start_date', 'end_date')
+    def _compute_name(self):
+        for req in self:
+            req.name = '%s requests vacation from (%s) to (%s)' % (
+                req.requester_id.name,
+                format_date(self.env, req.start_date),
+                format_date(self.env, req.end_date)
+            )
 
     def reject(self):
         self.write({'state': 'rejected'})
@@ -37,10 +46,13 @@ class MyRequests(models.Model):
     _name = 'vrs.request.my.requests.view'
     _description = 'My requests'
     _auto = False
-    _rec_name = 'state'
+    _rec_name = 'request_id'
 
     request_id = fields.Many2one('vrs.request')
     user_id = fields.Many2one('res.users')
+    days = fields.Integer()
+    comments = fields.Text()
+    reason_desc = fields.Text(string='Reason for rejection')
     state = fields.Selection(_STATES)
 
     def init(self):
@@ -48,12 +60,21 @@ class MyRequests(models.Model):
         self._cr.execute(
             """
             CREATE OR REPLACE VIEW %s AS (
+                WITH reason(request_id, reason_desc) AS (
+                    SELECT b.request_id, a.name 
+                    FROM vrs_reject_reason a 
+                        JOIN vrs_rejected_request b ON b.reason_id = a.id 
+                )
                 SELECT 
                     row_number() over(order by r.start_date desc) id,
                     r.id request_id,
                     e.user_id,
+                    date_part('day', r.end_date::timestamp - r.start_date::timestamp) days,
+                    r.comments,
+                    x.reason_desc,
                     r.state
                 FROM vrs_request r 
+                    LEFT JOIN reason x ON x.request_id = r.id
                     JOIN vrs_employee e ON e.id = r.requester_id
                     JOIN res_users u ON u.id = e.user_id
             )
