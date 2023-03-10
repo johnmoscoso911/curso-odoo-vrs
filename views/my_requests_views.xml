@@ -11,7 +11,7 @@
                     <div class="oe_button_box">
                         <widget name="web_ribbon" title="Rejected" bg_color="bg-danger"
                                 attrs="{'invisible': [('state', 'in', ['draft', 'accepted'])]}"/>
-                        <widget name="web_ribbon" title="Accepted" bg_color="bg-danger"
+                        <widget name="web_ribbon" title="Accepted" bg_color="bg-success"
                                 attrs="{'invisible': [('state', 'in', ['draft', 'rejected'])]}"/>
                     </div>
                     <group>
