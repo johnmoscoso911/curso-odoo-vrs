@@ -19,7 +19,7 @@
                             <field name="days"/>
                             <field name="comments" widget="html"/>
                         </group>
-                        <group string="Rejection info">
+                        <group string="Rejection info" attrs="{'invisible': [('reason_desc', '=', False)]}">
                             <field name="reason_desc"/>
                         </group>
                     </group>
