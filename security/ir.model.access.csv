@@ -12,3 +12,4 @@ vrs.access_vrs_reject_reason,access_vrs_reject_reason,vrs.model_vrs_reject_reaso
 access_vrs_approve_wizard_approver,access.vrs.approve.wizard.requester,model_vrs_approve_wizard,vrs.vrs_approver,1,0,1,0
 access_vrs_rejected_request_requester,vrs.rejected.request.requester,model_vrs_rejected_request,vrs.vrs_requester,1,0,1,0
 access_vrs_rejected_request_admin,vrs.rejected.request.admin,model_vrs_rejected_request,vrs.vrs_admin,1,0,0,0
+access_vrs_request_total_view_admin,access.vrs.request.total.view.admin,model_vrs_request_total_view,vrs.vrs_admin,1,0,0,0
