@@ -13,6 +13,7 @@
         'views/approve_views.xml',
         'views/my_requests_views.xml',
         'views/reason_views.xml',
+        'views/totals_views.xml',
 
         'wizard/request_wizard_views.xml',
         'wizard/approve_wizard_views.xml',

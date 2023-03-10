@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<odoo>
+    <!-- TREE VIEW -->
+    <record id="vrs_request_total_view_graph_view" model="ir.ui.view">
+        <field name="name">vrs.request.total.view.graph</field>
+        <field name="model">vrs.request.total.view</field>
+        <field name="arch" type="xml">
+            <graph string="Totals">
+                <field name="reason_id"/>
+                <field name="employee_id" invisible="1"/>
+            </graph>
+        </field>
+    </record>
+    <!-- SEARCH VIEW -->
+    <record id="vrs_request_total_view_filter_view" model="ir.ui.view">
+        <field name="name">vrs.request.total.view.filter</field>
+        <field name="model">vrs.request.total.view</field>
+        <field name="arch" type="xml">
+            <search string="Totals">
+                <field name="employee_id"/>
+                <separator/>
+                <group expand="0" string="Group By">
+                    <filter name="group_employee" string="Employee" context="{'group_by': 'employee_id'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+    <record id="action_vrs_request_total_view" model="ir.actions.act_window">
+        <field name="name">Totals</field>
+        <field name="res_model">vrs.request.total.view</field>
+        <field name="view_mode">graph</field>
+    </record>
+</odoo>

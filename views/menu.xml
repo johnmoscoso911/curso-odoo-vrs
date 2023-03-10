@@ -10,6 +10,10 @@
                   action="vrs_rejected_request_action_all"
                   sequence="19"
                   groups="vrs.vrs_admin"/>
+        <menuitem id="menu_vrs_request_total_view"
+                  action="action_vrs_request_total_view"
+                  sequence="18"
+                  groups="vrs.vrs_admin"/>
         <menuitem name="All requests"
                   id="vrs_my_requests_menu"
                   sequence="20"
