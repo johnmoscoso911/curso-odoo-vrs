@@ -114,7 +114,7 @@ class RequestView4Approver(models.Model):
                 )
                 select row_number() over(order by sub.request_id) as id,
                     sub.request_id,
-                    sub.id employee_id,
+                    sub.id as employee_id,
                     boss.user_id,
                     sub."name",
                     sub.start_date,
@@ -122,6 +122,15 @@ class RequestView4Approver(models.Model):
                     sub."comments",
                     sub.state
                 from boss join employee sub on sub.parent_id = boss.id
+                group by
+                    sub.request_id,
+                    sub.id,
+                    boss.user_id,
+                    sub."name",
+                    sub.start_date,
+                    sub.end_date,
+                    sub."comments",
+                    sub.state
                 order by sub.start_date
             )
             """ % (self._table,)
